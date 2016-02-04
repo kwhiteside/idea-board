@@ -1,0 +1,50 @@
+<div class="row">
+			<div class="col-xs-12 col-md-6 col-md-offset-3">
+				<div class="panel panel-default" ng-repeat="issue in issues | orderBy:'-upvotes'">
+				  <div class="panel-body">
+				  	<p>
+							<span class="label label-primary">
+						  	{{issue.department}}
+						  </span>
+					  </p>
+						<h3>
+					  	{{issue.title}}
+					  </h3>
+						<p>
+							{{issue.description}}
+							<br>
+							<a href="#/issues/{{$index}}">Read Comments</a>
+						</p>
+						<p>
+							<span class="badge">
+							Votes:&nbsp;&nbsp;{{issue.upvotes}}
+							</span>
+						</p>
+					</div> <!-- end panel body -->
+					<div class="panel-footer">
+						<button class="btn btn-default btn-sm" ng-click="incrementUpvotes(issue)">
+							<span class="glyphicon glyphicon-arrow-up"></span>
+						</button>
+						<button class="btn btn-default btn-sm" ng-click="decrementUpvotes(issue)">
+							<span class="glyphicon glyphicon-arrow-down"></span>
+						</button>
+					</div>
+				</div> <!-- end panel panel default -->
+			</div> <!-- end column -->
+		</div> <!-- end row -->
+
+		<div class="row">
+			<div class="col-xs-12 col-md-6 col-md-offset-3">
+				<form ng-submit="addIssue()">
+					<div class="form-group">
+						<label for="title">Issue Title</label>
+					  <input class="form-control addIssueInput" type="text" ng-model="title"></input>
+					  <label for="department">Department</label>
+					  <input class="form-control addIssueInput" type="text" ng-model="department"></input>
+					  <label for="description">Issue Description</label>
+					  <textarea class="form-control addIssueInput" rows="3" ng-model="description"></textarea>
+					  <button class="btn btn-success" type="submit">Post Issue</button>
+					</div>
+				</form>
+			</div> <!-- end column -->
+		</div> <!-- end row -->
