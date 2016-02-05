@@ -27,7 +27,7 @@ router.get('/issues', function(req, res, next) {
 router.post('/issues', function(req, res, next) {
   var issue = new Issue(req.body);
 
-  Issue.save(function(err, issue){
+  issue.save(function(err, issue){
     if(err){ return next(err); }
 
     res.json(issue);

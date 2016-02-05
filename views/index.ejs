@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Issue Board</title>
+	<title>Idea Board</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -20,7 +20,7 @@
 	  <div class="container">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 			<div class="row">
-			<div class="col-xs-12 col-md-6 col-md-offset-3">
+			<div class="col-xs-12">
 		    
 		    <div class="navbar-header">
 		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -29,7 +29,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="#">LD Central</a>
+		      <a class="navbar-brand" href="/#/home">Idea Board</a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,11 +37,11 @@
 	      
 		      <ul class="nav navbar-nav navbar-right">
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stations <span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Links <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
 		            <li class="active">
-				        	<a href="#">
-				        		Issue Board <span class="sr-only">(current)</span>
+				        	<a href="/#/home">
+				        		Idea Board <span class="sr-only">(current)</span>
 				        	</a>
 				        </li>
 		          </ul>
@@ -54,144 +54,16 @@
 		</nav>
 	</div><!-- /.container-fluid -->
 	<div class="container">
-
-		<div class="row">
-			<div class="col-xs-12 col-md-6 col-md-offset-3">
-				<h1>
-					Issue Board
-				</h1>
-			</div> <!-- end column -->
-		</div> <!-- end row -->
-
+		
 		<ui-view></ui-view>	
 
 	</div> <!-- end container -->
 
-	
-	<!-- INLINE TEMPLATES -->
-	<script type="text/ng-template" id="/home.html">
-
-		<div class="row">
-			<div class="col-xs-12 col-md-6 col-md-offset-3">
-				<div class="panel panel-default" ng-repeat="issue in issues | orderBy:'-upvotes'">
-				  <div class="panel-body">
-				  	<p>
-							<span class="label label-primary">
-						  	{{issue.department}}
-						  </span>
-					  </p>
-						<h3>
-					  	{{issue.title}}
-					  </h3>
-					  <p>
-							<span class="badge">
-							Votes:&nbsp;&nbsp;{{issue.upvotes}}
-							</span>
-						</p>
-						<p>
-							{{issue.description}}
-						</p>
-						<p>
-							<a class="btn btn-default" href="#/issues/{{$index}}">Read Comments</a>
-						</p>
-					</div> <!-- end panel body -->
-					<div class="panel-footer">
-						<button class="btn btn-default btn-sm" ng-click="incrementUpvotes(issue)">
-							<span class="glyphicon glyphicon-arrow-up"></span>
-						</button>
-						<button class="btn btn-default btn-sm" ng-click="decrementUpvotes(issue)">
-							<span class="glyphicon glyphicon-arrow-down"></span>
-						</button>
-					</div>
-				</div> <!-- end panel panel default -->
-			</div> <!-- end column -->
-		</div> <!-- end row -->
-
-		<div class="row">
-			<div class="col-xs-12 col-md-6 col-md-offset-3">
-				<form ng-submit="addIssue()">
-					<div class="form-group">
-						<label for="title">Issue Title</label>
-					  <input class="form-control addIssueInput" type="text" ng-model="title"></input>
-					  <label for="department">Department</label>
-					  <input class="form-control addIssueInput" type="text" ng-model="department"></input>
-					  <label for="description">Issue Description</label>
-					  <textarea class="form-control addIssueInput" rows="3" ng-model="description"></textarea>
-					  <button class="btn btn-success" type="submit">Post Issue</button>
-					</div>
-				</form>
-			</div> <!-- end column -->
-		</div> <!-- end row -->
-
-	</script>
-
-	<script type="text/ng-template" id="/issues.html">
-		
-		<div class="row">
-			<div class="col-xs-12 col-md-6 col-md-offset-3">
-				<div class="panel panel-default">
-				  <div class="panel-body">
-				  	<p>
-							<span class="label label-primary">
-						  	{{issue.department}}
-						  </span>
-					  </p>
-						<h3>
-					  	{{issue.title}}
-					  </h3>
-						<p>
-							{{issue.description}}
-						</p>
-						<p>
-							<span class="badge">
-							Votes:&nbsp;&nbsp;{{issue.upvotes}}
-							</span>
-						</p>
-					</div> <!-- end panel body -->
-					<div class="panel-footer">
-						<button class="btn btn-default btn-sm" ng-click="incrementUpvotes(issue)">
-							<span class="glyphicon glyphicon-arrow-up"></span>
-						</button>
-						<button class="btn btn-default btn-sm" ng-click="decrementUpvotes(issue)">
-							<span class="glyphicon glyphicon-arrow-down"></span>
-						</button>
-					</div>
-				</div> <!-- end panel panel default -->
-			</div> <!-- end column -->
-		</div> <!-- end row -->
-
-		<div class="row">
-			<div class="col-xs-12 col-md-6 col-md-offset-3">
-			  <p ng-repeat="comment in issue.comments | orderBy:'-upvotes'">
-			    <button class="btn btn-default btn-sm" ng-click="incrementUpvotes(comment)">
-						<span class="glyphicon glyphicon-arrow-up"></span>
-					</button>&nbsp;&nbsp;
-		    	<strong>{{comment.upvotes}}</strong> - by {{comment.author}} - "{{comment.body}}"
-			  </p>
-			 </div> <!-- end column -->
-		</div> <!-- end row -->
-
-		<div class="row">
-			<div class="col-xs-12 col-md-6 col-md-offset-3">
-				<form ng-submit="addComment()">
-			    <h3>
-			    	Add a new comment
-			    </h3>
-					<div class="form-group">
-			      <input type="text" class="form-control" placeholder="Comment" ng-model="body"></input>
-			    </div>
-			    <button type="submit" class="btn btn-primary">Post Comment</button>
-			  </form>
-			</div>
-		</div>
-
-	</script>
-
 	<script src="../../javascripts/jquery.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="../../javascripts/bootstrap.min.js"></script>
 	<script src="../../javascripts/angular.min.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+	<script src="../../javascripts/angular-ui-router.js"></script>
 	<script src="../../javascripts/angularApp.js"></script>
 
 </body>

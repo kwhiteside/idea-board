@@ -1,3 +1,31 @@
+
+/* ====== FORM ====== */
+
 .form-control.addIssueInput {
 	margin-bottom: 15px;
+}
+.form-group {
+	margin-bottom: 0;
+}
+/* ====== TYPOGRAPHY ====== */
+
+h1, h2, h3, h4, h5, h6, p, a {
+	margin-top: 0;
+	padding-top: 0;
+}
+.comment {
+	padding-left: 17px;
+}
+
+/* ====== LABELS ====== */
+
+h3.label-style {
+	margin: 0;
+	display: inline-block;
+	font-size: 22px;
+}
+
+.topic-label {
+	margin-top: 0;
+	display: inline-block;
 }

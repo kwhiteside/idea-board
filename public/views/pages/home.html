@@ -1,50 +1,77 @@
 <div class="row">
-			<div class="col-xs-12 col-md-6 col-md-offset-3">
-				<div class="panel panel-default" ng-repeat="issue in issues | orderBy:'-upvotes'">
-				  <div class="panel-body">
-				  	<p>
-							<span class="label label-primary">
-						  	{{issue.department}}
-						  </span>
-					  </p>
-						<h3>
-					  	{{issue.title}}
-					  </h3>
-						<p>
-							{{issue.description}}
-							<br>
-							<a href="#/issues/{{$index}}">Read Comments</a>
-						</p>
-						<p>
-							<span class="badge">
-							Votes:&nbsp;&nbsp;{{issue.upvotes}}
-							</span>
-						</p>
-					</div> <!-- end panel body -->
-					<div class="panel-footer">
-						<button class="btn btn-default btn-sm" ng-click="incrementUpvotes(issue)">
-							<span class="glyphicon glyphicon-arrow-up"></span>
-						</button>
-						<button class="btn btn-default btn-sm" ng-click="decrementUpvotes(issue)">
-							<span class="glyphicon glyphicon-arrow-down"></span>
-						</button>
-					</div>
-				</div> <!-- end panel panel default -->
-			</div> <!-- end column -->
-		</div> <!-- end row -->
+	<div class="col-xs-12 col-md-8">
+		<h1>
+			Idea List
+		</h1>
+	</div> <!-- end column -->
+</div> <!-- end row -->
 
-		<div class="row">
-			<div class="col-xs-12 col-md-6 col-md-offset-3">
+<div class="row" style="display:none;">
+	<div class="col-xs-12">
+		<h5>
+			Filter by Topic:
+		</h5>
+		<a href="#Topic1"><h5 class="topic-label"><span class="label label-primary">Topic 1</span></h5></a>
+		<a href="#Topic2"><h5 class="topic-label"><span class="label label-primary">Topic 2</span></h5></a>
+		<a href="#Topic3"><h5 class="topic-label"><span class="label label-primary">Topic 3</span></h5></a>
+		<a href="#Topic4"><h5 class="topic-label"><span class="label label-primary">Topic 4</span></h5></a>
+		<a href="#Topic5"><h5 class="topic-label"><span class="label label-primary">Topic 5</span></h5></a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-md-8">
+		<div class="panel panel-default" ng-repeat="issue in issues | orderBy:'-upvotes'">
+		  <div class="panel-body">
+		  	<p>
+					<span class="label label-primary">
+				  	{{issue.department}}
+				  </span>
+			  </p>
+			  <a href="#/issues/{{issue._id}}">
+					<h3>
+				  	{{issue.title}}
+				  </h3>
+			  </a>
+				<p>
+					{{issue.description | limitTo: 140}}{{issue.description.length > 140 ? '...' : ''}}
+				</p>
+			</div> <!-- end panel body -->
+			<div class="panel-footer">
+				<button class="btn btn-default btn-sm" ng-click="incrementUpvotes(issue)">
+					<span class="glyphicon glyphicon-chevron-up"></span>
+				</button>
+				&nbsp;&nbsp;
+				<h3 class="label-style">
+					<span class="label label-success">
+						Votes:&nbsp;&nbsp;{{issue.upvotes}}
+					</span>
+				</h3>
+				&nbsp;&nbsp;
+				<a class="btn btn-default" href="#/issues/{{issue._id}}">Read Comments</a>
+			</div>
+		</div> <!-- end panel panel default -->
+	</div> <!-- end column -->
+
+	<div class="col-xs-12 col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-body">
 				<form ng-submit="addIssue()">
+					<h3>
+						Add Your Idea
+					</h3>
+					<hr>
 					<div class="form-group">
-						<label for="title">Issue Title</label>
+						<label for="title">Idea Title</label>
 					  <input class="form-control addIssueInput" type="text" ng-model="title"></input>
 					  <label for="department">Department</label>
 					  <input class="form-control addIssueInput" type="text" ng-model="department"></input>
-					  <label for="description">Issue Description</label>
+					  <label for="description">Idea Description</label>
 					  <textarea class="form-control addIssueInput" rows="3" ng-model="description"></textarea>
-					  <button class="btn btn-success" type="submit">Post Issue</button>
+					  <button class="btn btn-default btn-lg btn-block" type="submit">Post Idea</button>
 					</div>
 				</form>
-			</div> <!-- end column -->
-		</div> <!-- end row -->
+			</div>
+		</div>
+	</div> <!-- end column -->
+</div> <!-- end row -->
