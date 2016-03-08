@@ -3,7 +3,7 @@
 		<div class="panel panel-default">
 		  <div class="panel-body">
 		  	<p>
-					<span class="label label-primary">
+					<span class="label label-default">
 				  	{{issue.department}}
 				  </span>
 			  </p>
@@ -15,10 +15,6 @@
 				</p>
 			</div> <!-- end panel body -->
 			<div class="panel-footer">
-				<button class="btn btn-default btn-sm" ng-click="incrementUpvotes(issue)">
-					<span class="glyphicon glyphicon-chevron-up"></span>
-				</button>
-				&nbsp;&nbsp;
 				<h3 class="label-style">
 					<span class="label label-success">
 						Votes:&nbsp;&nbsp;{{issue.upvotes}}
@@ -33,8 +29,8 @@
 	<div class="col-xs-12 col-md-8">
 	  <div class="comment" ng-repeat="comment in issue.comments | orderBy:'-upvotes'">
 		  <p>
-		    <button class="btn btn-default btn-sm" ng-click="incrementCommentUpvotes(comment)">
-					<span class="glyphicon glyphicon-chevron-up"></span>
+		    <button class="btn btn-default btn-sm" ng-click="incrementUpvotes(comment)">
+					<span class="glyphicon glyphicon-arrow-up"></span>
 				</button>&nbsp;&nbsp;
 	    	<strong>{{comment.upvotes}}</strong> - by <strong>{{comment.author}}</strong> - "{{comment.body}}"
 		  </p>

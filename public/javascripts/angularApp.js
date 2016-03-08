@@ -130,7 +130,7 @@ app.controller('issueCtrl', [
 
 		};
 
-		$scope.incrementCommentUpvotes = function(comment){
+		$scope.incrementUpvotes = function(comment){
 		  issues.upvoteComment(issue, comment);
 		};
 

@@ -1,3 +1,30 @@
+/* ====== CONTAINER ====== */
+
+.container.main-container {
+	padding-bottom: 50px;
+}
+
+/* ====== NAVBAR ====== */
+
+.navbar.navbar-default {
+	background-image: none;
+	background-color: #4d4d4d;
+	border: 0;
+	border-radius: 0;
+}
+.navbar.navbar-default a {
+	color: #fff;
+	text-shadow: none;
+}
+.navbar.navbar-default a:hover {
+	color: #ccc;
+}
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover {
+	color: #ccc;
+}
 
 /* ====== FORM ====== */
 
